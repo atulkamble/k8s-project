@@ -2,6 +2,8 @@
 
 This repository provides a minimal, production-ready Kubernetes scaffold using Kustomize with dev and prod overlays.
 
+- See docs: [Architecture](docs/architecture.md), [Theory](docs/theory.md)
+
 ## Prerequisites
 - kubectl
 - kustomize (or kubectl >= 1.14 which includes `-k`)
