@@ -13,12 +13,38 @@ This repository provides a minimal, production-ready Kubernetes scaffold using K
 ## Structure
 ```
 k8s-project/
-  base/                # Base resources
-  overlays/
-    dev/               # Dev overlay
-    prod/              # Prod overlay
-  scripts/             # Helper scripts
+  LICENSE
   Makefile
+  README.md
+  kind-config.yaml
+  eksctl-config.yaml
+  .github/
+    workflows/
+      ci.yml
+  base/
+    deployment.yaml
+    ingress.yaml
+    kustomization.yaml
+    namespace.yaml
+    service.yaml
+  overlays/
+    dev/
+      kustomization.yaml
+      patch-deployment.yaml
+      patch-ingress.yaml
+      patch-service.yaml
+    prod/
+      kustomization.yaml
+      patch-ingress.yaml
+      patch-service.yaml
+  scripts/
+    kind-up.sh
+    kind-down.sh
+    eks-up.sh
+    eks-down.sh
+  docs/
+    architecture.md
+    theory.md
 ```
 
 ## Quick start (kind)
