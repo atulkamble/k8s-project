@@ -71,3 +71,15 @@ make context       # show kubectl context and namespace
 ## Notes
 - Base uses `nginx` as a placeholder app. Replace image and manifests as needed.
 - Ingress hostnames are placeholders. For Kind, use `http://localhost:8080`. For EKS, use the Service `EXTERNAL-IP` unless you configure an ALB Ingress Controller and DNS.
+
+## 👨‍💻 Author
+
+**Atul Kamble**
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/atuljkamble)
+- 🐙 [GitHub](https://github.com/atulkamble)
+- 🐦 [X](https://x.com/Atul_Kamble)
+- 📷 [Instagram](https://www.instagram.com/atuljkamble)
+- 🌐 [Website](https://www.atulkamble.in)
+
+---
