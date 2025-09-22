@@ -1,0 +1,26 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: k8s-project
+  region: us-east-1
+  version: "1.29"
+availabilityZones:
+- us-east-1a
+- us-east-1b
+managedNodeGroups:
+- name: ng-general
+  desiredCapacity: 2
+  minSize: 2
+  maxSize: 4
+  instanceTypes:
+  - t3.medium
+  amiFamily: AmazonLinux2
+  labels:
+    role: general
+  tags:
+    nodegroup-role: general
+  ssh:
+    allow: false
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["api", "audit", "authenticator", "controllerManager", "scheduler"]

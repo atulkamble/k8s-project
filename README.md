@@ -6,6 +6,7 @@ This repository provides a minimal, production-ready Kubernetes scaffold using K
 - kubectl
 - kustomize (or kubectl >= 1.14 which includes `-k`)
 - kind or a Kubernetes cluster
+- (AWS) awscli and eksctl with credentials configured
 
 ## Structure
 ```
@@ -22,17 +23,49 @@ k8s-project/
 ```bash
 make kind-up
 make apply-dev
-kubectl get all -n demo
+open http://localhost:8080
+```
+
+## Quick start (AWS EKS 2-node)
+```bash
+make eks-up                          # creates EKS in us-east-1 by default
+make apply-prod
+kubectl get svc -n demo | grep web
+# copy the EXTERNAL-IP and open http://<external-ip>
+```
+
+To customize:
+```bash
+make eks-up EKS_CLUSTER_NAME=myproj EKS_REGION=us-west-2
+```
+
+Tear down:
+```bash
+make eks-down EKS_CLUSTER_NAME=myproj EKS_REGION=us-west-2
 ```
 
 ## Apply/delete
 ```bash
-make apply-dev     # apply dev overlay
+make apply-dev     # apply dev overlay (NodePort 30080 -> localhost:8080)
 make delete-dev    # delete dev overlay
-make apply-prod    # apply prod overlay
+make apply-prod    # apply prod overlay (Service LoadBalancer)
 make delete-prod   # delete prod overlay
 ```
 
+## Other handy targets
+```bash
+make help          # list all targets
+make diff          # show server diff for current OVERLAY (default dev)
+make build         # render manifests to build.yaml
+make context       # show kubectl context and namespace
+```
+
+## Configuration
+- `OVERLAY` controls which overlay is used (default `dev`).
+- `NAMESPACE` optionally sets `kubectl -n` for commands.
+- `CLUSTER_NAME` and `KIND_CONFIG` customize Kind cluster creation.
+- `EKS_CLUSTER_NAME`, `EKS_REGION`, and `EKSCTL_CONFIG` customize EKS creation.
+
 ## Notes
 - Base uses `nginx` as a placeholder app. Replace image and manifests as needed.
-- Ingress hostnames are placeholders (`dev.example.local`, `example.com`). Update to your domains or use `nip.io` for quick testing.
+- Ingress hostnames are placeholders. For Kind, use `http://localhost:8080`. For EKS, use the Service `EXTERNAL-IP` unless you configure an ALB Ingress Controller and DNS.
