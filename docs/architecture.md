@@ -18,7 +18,7 @@ flowchart LR
     eks_pods["Pods (Deployment)"]
   end
 
-  user -->|"http://localhost:8080"| kind_ing
+  user -->|"http://localhost:3000"| kind_ing
   kind_ing --> kind_svc
   user -->|"EXTERNAL-IP"| eks_alb
   eks_alb --> eks_lb
@@ -28,5 +28,5 @@ flowchart LR
 ```
 
 Key points:
-- Dev overlay exposes `Service` as NodePort 30080. With Kind port-mapping 30080→8080, open `http://localhost:8080`.
+- Dev overlay exposes `Service` as NodePort 30080. With Kind port-mapping 30080→3000, open `http://localhost:3000`.
 - Prod overlay exposes `Service` as `LoadBalancer` (NLB). Use the service `EXTERNAL-IP` or front with an ALB `Ingress` and DNS when needed.

@@ -13,7 +13,7 @@ nodes:
         enable-aggregator-routing: "true"
   extraPortMappings:
   - containerPort: 30080
-    hostPort: 8080
+    hostPort: 3000
     protocol: TCP
   - containerPort: 30443
     hostPort: 8443

@@ -51,7 +51,7 @@ k8s-project/
 ```bash
 make kind-up
 make apply-dev
-open http://localhost:8080
+open http://localhost:3000
 ```
 
 ## Quick start (AWS EKS 2-node)
@@ -74,7 +74,7 @@ make eks-down EKS_CLUSTER_NAME=myproj EKS_REGION=us-west-2
 
 ## Apply/delete
 ```bash
-make apply-dev     # apply dev overlay (NodePort 30080 -> localhost:8080)
+make apply-dev     # apply dev overlay (NodePort 30080 -> localhost:3000)
 make delete-dev    # delete dev overlay
 make apply-prod    # apply prod overlay (Service LoadBalancer)
 make delete-prod   # delete prod overlay
@@ -96,7 +96,7 @@ make context       # show kubectl context and namespace
 
 ## Notes
 - Base uses `nginx` as a placeholder app. Replace image and manifests as needed.
-- Ingress hostnames are placeholders. For Kind, use `http://localhost:8080`. For EKS, use the Service `EXTERNAL-IP` unless you configure an ALB Ingress Controller and DNS.
+- Ingress hostnames are placeholders. For Kind, use `http://localhost:3000`. For EKS, use the Service `EXTERNAL-IP` unless you configure an ALB Ingress Controller and DNS.
 
 ## 👨‍💻 Author
 

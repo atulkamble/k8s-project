@@ -19,7 +19,7 @@ This project demonstrates a common Kubernetes deployment pattern using Kustomize
   - Patches set `Service` to `LoadBalancer` (NLB) and configure ALB Ingress annotations
 
 ## Local vs Cloud Traffic
-- Local (Kind): `user -> localhost:8080 -> NodePort 30080 -> Service -> Pods`
+- Local (Kind): `user -> localhost:3000 -> NodePort 30080 -> Service -> Pods`
 - AWS (EKS): `user -> ALB hostname -> NLB (Service) -> Pods` or directly `EXTERNAL-IP` of the Service if no ALB.
 
 ## CI
